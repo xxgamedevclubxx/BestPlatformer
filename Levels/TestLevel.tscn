@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=4 uid="uid://bm1e74cartkiw"]
+[gd_scene load_steps=5 format=4 uid="uid://bm1e74cartkiw"]
 
-[ext_resource type="Texture2D" uid="uid://bqadlfkw3fg4e" path="res://Assets/Background/Green.png" id="1_qc7c7"]
 [ext_resource type="PackedScene" uid="uid://dxrc0wloq1pnd" path="res://Scenes/player.tscn" id="2_ulo54"]
 [ext_resource type="Texture2D" uid="uid://ddk2f33lpwkqx" path="res://Assets/Terrain/Terrain (16x16).png" id="3_fqi04"]
 
@@ -12,10 +11,15 @@ texture = ExtResource("3_fqi04")
 3:0/0 = 0
 4:0/0 = 0
 6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:0/0 = 0
 13:0/0 = 0
 14:0/0 = 0
@@ -29,23 +33,34 @@ texture = ExtResource("3_fqi04")
 3:1/0 = 0
 4:1/0 = 0
 6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:1/0 = 0
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:1/0 = 0
 13:1/0 = 0
 14:1/0 = 0
 15:1/0 = 0
 17:1/0 = 0
+17:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:1/0 = 0
+18:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:1/0 = 0
+19:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
 6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:2/0 = 0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:2/0 = 0
 14:2/0 = 0
 15:2/0 = 0
@@ -152,21 +167,10 @@ texture = ExtResource("3_fqi04")
 20:10/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lgot2"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vssc4")
 
 [node name="Node2D" type="Node"]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("1_qc7c7")
-stretch_mode = 1
 
 [node name="TileMap" type="Node" parent="."]
 
@@ -178,6 +182,6 @@ tile_map_data = PackedByteArray("AAD//wwAAAAHAAAAAAAAAAwAAAAHAAAAAAABAAwAAAAHAAA
 tile_set = SubResource("TileSet_lgot2")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ulo54")]
-position = Vector2(179, 156)
+position = Vector2(563, 260)
 platform_floor_layers = 4294967041
 platform_wall_layers = 3
