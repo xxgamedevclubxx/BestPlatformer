@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvq5er5vw5a0t"]
 
-[ext_resource type="Script" path="res://Assets/CharacterController.cs" id="1_dcagj"]
+[ext_resource type="Script" path="res://Assets/CharController.cs" id="1_7s8aq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33lhy"]
 
@@ -9,13 +9,13 @@
 [node name="TestPlayer" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_dcagj")
+script = ExtResource("1_7s8aq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_33lhy")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/CollisionShape2D"]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_q21mu")
-
-[node name="Camera2D" type="Camera2D" parent="."]
