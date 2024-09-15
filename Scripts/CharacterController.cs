@@ -3,6 +3,7 @@ using System;
 
 public partial class CharacterController : CharacterBody2D
 {
+	// Physics constants
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 
