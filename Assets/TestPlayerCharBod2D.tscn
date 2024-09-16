@@ -8,8 +8,14 @@
 
 [node name="TestPlayer" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("rightRay", "leftRay", "coyoteTimer", "jumpBufferTimer", "wallJumpTimer", "wallJumpCoyoteTimer")]
 script = ExtResource("1_7s8aq")
+rightRay = NodePath("rightRay")
+leftRay = NodePath("leftRay")
+coyoteTimer = NodePath("coyoteTimer")
+jumpBufferTimer = NodePath("jumpBufferTimer")
+wallJumpTimer = NodePath("wallJumpTimer")
+wallJumpCoyoteTimer = NodePath("wallJumpCoyoteTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_33lhy")
@@ -19,3 +25,23 @@ shape = SubResource("RectangleShape2D_33lhy")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(20, 20)
 texture = SubResource("CanvasTexture_q21mu")
+
+[node name="leftRay" type="RayCast2D" parent="CharacterBody2D"]
+target_position = Vector2(-11, 0)
+
+[node name="rightRay" type="RayCast2D" parent="CharacterBody2D"]
+target_position = Vector2(11, 0)
+
+[node name="coyoteTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.1
+one_shot = true
+
+[node name="wallJumpTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.18
+one_shot = true
+
+[node name="jumpBufferTimer" type="Timer" parent="CharacterBody2D"]
+
+[node name="wallJumpCoyoteTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.15
+one_shot = true
