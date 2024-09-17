@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvq5er5vw5a0t"]
 
-[ext_resource type="Script" path="res://Assets/CharController.cs" id="1_7s8aq"]
+[ext_resource type="Script" path="res://Scripts/CharController.cs" id="1_7s8aq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33lhy"]
 
