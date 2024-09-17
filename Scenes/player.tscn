@@ -193,6 +193,8 @@ size = Vector2(48, 59)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_nx0pa")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2.09375, 2.09375)
@@ -202,3 +204,23 @@ animation = &"Running"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_g7o01")
+
+[node name="leftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-30, 0)
+
+[node name="rightRay" type="RayCast2D" parent="."]
+target_position = Vector2(27, 0)
+
+[node name="coyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="wallJumpTimer" type="Timer" parent="."]
+wait_time = 0.18
+one_shot = true
+
+[node name="jumpBufferTimer" type="Timer" parent="."]
+
+[node name="wallJumpCoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true

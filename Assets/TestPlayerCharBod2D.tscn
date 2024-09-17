@@ -8,14 +8,8 @@
 
 [node name="TestPlayer" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("rightRay", "leftRay", "coyoteTimer", "jumpBufferTimer", "wallJumpTimer", "wallJumpCoyoteTimer")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_7s8aq")
-rightRay = NodePath("rightRay")
-leftRay = NodePath("leftRay")
-coyoteTimer = NodePath("coyoteTimer")
-jumpBufferTimer = NodePath("jumpBufferTimer")
-wallJumpTimer = NodePath("wallJumpTimer")
-wallJumpCoyoteTimer = NodePath("wallJumpCoyoteTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("RectangleShape2D_33lhy")
