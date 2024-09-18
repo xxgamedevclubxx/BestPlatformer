@@ -15,16 +15,41 @@ public partial class CharController : CharacterBody2D
 
 	// Movement settings
 	private const float Speed = 250.0f;
-    private const float max_speed = 250.0f;
-	private const float accel = 250.0f;
-    private const float friction = 250.0f;
-
 	private const float SlideSpeed = 1750.0f;
-	private const float JumpVelocity = -400.0f;
 	private const float WallJumpHorizontalVelocity = 400.0f;
 	private const float WallJumpVerticalVelocity = -400.0f;
 	private const float Gravity = 800.0f;
 	private const float WallSlideSpeed = 100.0f;
+    // Variables equivalent to Unity's serialized fields
+    [Export] private float JumpPower = 500f;
+    [Export] private float max_speed = 200f;
+    [Export] private float accel = 1000f;
+    [Export] private float Deceleration = 1000f;
+    [Export] private float FallAcceleration = 1000f;
+    [Export] private float MaxFallSpeed = 1000f;
+    [Export] private float GroundingForce = 10f;
+    [Export] private float JumpEndEarlyGravityModifier = 2f;
+    [Export] private float JumpBuffer = 0.1f;  // Jump buffer
+
+    // Cached time variable
+    private float _time;
+
+	    // Input gathering
+    private Vector2 _inputMove = Vector2.Zero;
+    private bool _jumpDown;
+    private bool _jumpHeld;
+
+
+    // Player state variables
+    private Vector2 _frameVelocity = Vector2.Zero;
+    private bool _jumpToConsume;
+    private bool _bufferedJumpUsable;
+    private bool _endedJumpEarly;
+    private float _timeJumpWasPressed;
+    private float _frameLeftGrounded = float.MinValue;
+    private bool _grounded;
+
+
 
 	private bool isWallSliding,
 		isJumpingFromWall;
@@ -32,7 +57,7 @@ public partial class CharController : CharacterBody2D
 	private RayCast2D lastRayColliding = null;
 
 	private AnimatedSprite2D sprite2d;
-	
+
 	public override void _Ready()
 	{
 		
@@ -93,7 +118,7 @@ public partial class CharController : CharacterBody2D
 		// Handle Jump.
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		{
-			velocity.Y = JumpVelocity;
+			velocity.Y -= JumpPower;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
@@ -101,18 +126,12 @@ public partial class CharController : CharacterBody2D
 		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		if (direction != Vector2.Zero)
 		{
-            if (velocity.Length > (friction*delta)){
-                velocity -= velocity.Normalized() * (friction*delta);
-
-
-    
-    
-    //		velocity.X =
-	//		direction != Vector2.Zero && wallJumpTimer.IsStopped()
-	//			? direction.X * Speed
-	//			: Mathf.MoveToward(Velocity.X, 0, SlideSpeed * (float)delta);
+    		velocity.X =
+			direction != Vector2.Zero && wallJumpTimer.IsStopped()
+				? direction.X * Speed
+				: Mathf.MoveToward(Velocity.X, 0, SlideSpeed * (float)delta);
             }
-		}
+		
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
