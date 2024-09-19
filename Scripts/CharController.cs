@@ -1,10 +1,22 @@
 using Godot;
 using System;
+/*
+General character controller
+*/
+
 
 public partial class CharController : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+
+	public override void _Ready()
+	{
+		//lock the mouse cursor
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+	}
+
+	[Export] public Node2D CameraNode { get; set; }
+	[Export] public float Speed = 300.0f;
+	[Export] public float JumpVelocity = -400.0f;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -36,5 +48,16 @@ public partial class CharController : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	private void ToggleMouseMode() {
+		if(Input.MouseMode == Input.MouseModeEnum.Visible)
+		{
+			Input.MouseMode = Input.MouseModeEnum.Captured;
+		}
+		else 
+		{
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
 	}
 }
