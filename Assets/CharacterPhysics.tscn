@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://5u608h6cnap1"]
-
-[node name="CharacterPhysics" type="Node2D"]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]

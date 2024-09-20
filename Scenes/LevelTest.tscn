@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bm1e74cartkiw"]
 
-[ext_resource type="PackedScene" uid="uid://dvq5er5vw5a0t" path="res://Assets/TestPlayerCharBod2D.tscn" id="1_wpadd"]
+[ext_resource type="PackedScene" uid="uid://dvq5er5vw5a0t" path="res://Scenes/Player.tscn" id="1_efdew"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_01kf3"]
 
@@ -19,5 +19,5 @@ texture = SubResource("CanvasTexture_01kf3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_34ad1")
 
-[node name="TestPlayer" parent="." instance=ExtResource("1_wpadd")]
-position = Vector2(-2, -23)
+[node name="TestPlayer" parent="." instance=ExtResource("1_efdew")]
+position = Vector2(0, -47)
