@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://1s5e4yy6glx8"]
+[gd_scene load_steps=5 format=4 uid="uid://0jg06563vi4"]
 
 [ext_resource type="Texture2D" uid="uid://bn61reldq5kxa" path="res://Assets/PrototypeTilesheet.png" id="1_yvgw1"]
 [ext_resource type="PackedScene" uid="uid://dvq5er5vw5a0t" path="res://Assets/TestPlayerCharBod2D.tscn" id="2_wokv7"]
@@ -138,7 +138,6 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_yeklu"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_crhqk")
 
 [node name="Level1" type="Node2D"]
