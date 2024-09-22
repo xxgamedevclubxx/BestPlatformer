@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0m7x0ib36km6"]
+
+[ext_resource type="PackedScene" uid="uid://bl7e1tr26jk54" path="res://Scenes/Tilemaps/TiledTestLevel.tscn" id="1_wh1ay"]
+[ext_resource type="PackedScene" path="res://Scenes/Tilemaps/House.tscn" id="2_3enmr"]
+[ext_resource type="PackedScene" uid="uid://dvq5er5vw5a0t" path="res://Scenes/Entities/TestPlayerCharBod2D.tscn" id="2_754n8"]
+
+[node name="LevelExample" type="Node2D"]
+
+[node name="TiledTestLevel" parent="." instance=ExtResource("1_wh1ay")]
+
+[node name="House" parent="." instance=ExtResource("2_3enmr")]
+position = Vector2(-1920, -768)
+
+[node name="TestPlayer" parent="." instance=ExtResource("2_754n8")]
