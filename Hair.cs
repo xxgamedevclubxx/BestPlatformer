@@ -7,7 +7,7 @@ using System.Collections.Generic;
 	for length, width, gravity, additional properties for 
 	behavior/shape
 */
-
+[Tool]
 public partial class Hair : Node2D
 {
 	[Export] public float Width { get; set; } = 50.0f;
