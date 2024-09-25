@@ -21,7 +21,7 @@ public partial class CharController : CharacterBody2D
 	private const float Gravity = 800.0f;
 	private const float WallSlideSpeed = 100.0f;
     // Variables equivalent to Unity's serialized fields
-    [Export] private float JumpPower = 500f;
+    [Export] private float JumpPower = 200f;
     [Export] private float max_speed = 200f;
     [Export] private float accel = 1000f;
     [Export] private float Deceleration = 1000f;
@@ -30,6 +30,9 @@ public partial class CharController : CharacterBody2D
     [Export] private float GroundingForce = 10f;
     [Export] private float JumpEndEarlyGravityModifier = 2f;
     [Export] private float JumpBuffer = 0.1f;  // Jump buffer
+	[Export] private float movementSpeed = 20f;
+    private Vector2 movementDirection;
+    private Vector2 movementVelocity;
 
     // Cached time variable
     private float _time;
@@ -113,28 +116,25 @@ public partial class CharController : CharacterBody2D
 			isWallSliding = false;
 		}
 
-
-			
 		// Handle Jump.
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		{
 			velocity.Y -= JumpPower;
 		}
-
+	
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		private Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		movementDirection = Vector3(direction.x, 0f, direction.y);
+
 		if (direction != Vector2.Zero)
 		{
-    		velocity.X =
-			direction != Vector2.Zero && wallJumpTimer.IsStopped()
-				? direction.X * Speed
-				: Mathf.MoveToward(Velocity.X, 0, SlideSpeed * (float)delta);
-            }
-		
+		Vector3 desiredVelocity = movementDirection.normalized * movementSpeed;
+    	velocity = Vector3.MoveTowards(velocity, desiredVelocity, accel * Time.deltaTime);
+		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+            velocity = Vector2.MoveTowards(velocity, Vector3.zero, Deceleration * Time.deltaTime);
 		}
 
 		 //Handle Wall Jump, timer included so the jump away from the wall is not cut too short.
@@ -143,7 +143,7 @@ public partial class CharController : CharacterBody2D
 			// Floor jump condition
 			if (IsOnFloor() || coyoteTimer.TimeLeft > 0.0)
 			{
-				velocity.Y = JumpVelocity;
+				velocity.Y -= JumpPower;
 			}
 			// Wall jump condition
 			else if (lastRayColliding != null && (IsOnWall() || wallJumpCoyoteTimer.TimeLeft > 0.0))
