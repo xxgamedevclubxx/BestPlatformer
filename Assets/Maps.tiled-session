@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "House.tmx",
+    "activeFile": "PrototypeTilesheet.tsx",
     "expandedProjectPaths": [
         "."
     ],
@@ -12,8 +12,8 @@
             "scale": 0.03125,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 704,
-                "y": 256
+                "x": 688,
+                "y": 240
             }
         },
         "PrototypeTilesheet.tsx": {
@@ -32,7 +32,7 @@
             "scale": 0.0625,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2928,
+                "x": 2920,
                 "y": 504
             }
         }
@@ -48,7 +48,8 @@
     "map.tileWidth": 64,
     "openFiles": [
         "Tilemap1.tmx",
-        "House.tmx"
+        "House.tmx",
+        "PrototypeTilesheet.tsx"
     ],
     "project": "Maps.tiled-project",
     "recentFiles": [
